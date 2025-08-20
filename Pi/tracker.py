@@ -1,6 +1,12 @@
 import requests
 import time
 
+"""
+
+    This file contains code that gets the satellites location from the n2yo.com
+
+"""
+
 ##################################################
 # Define constants
 ##################################################
@@ -8,21 +14,6 @@ import time
 # N2YO API Key
 API_KEY = '8YERHU-S2D9VX-HRMEX2-5JAP' # TODO: hide
 
-# Satellite NORAD ID's
-NOAA_19_NORAD_ID = '33591'
-NOAA_18_NORAD_ID = '28654'
-NOAA_15_NORAD_ID = '25338'
-
-
-# Current location (will need to make this a variable eventually)
-# Ottawa general longitude, latitude, altitude
-MY_LONG = '45.41117'
-MY_LAT = '-75.69812'
-MY_ALT = '44' # metres above sea level
-
-# Output of get_satellite_position()
-# caches next 300s of satellite data to save space
-sat_position = dict()
 
 ##################################################
 # API Calls
@@ -44,10 +35,10 @@ def get_satellite_position(sat_id, lat, long, alt):
 # Functionality
 ##################################################
 
-def get_current_satellite_position(sat_id):
-    global sat_position
+def get_current_satellite_position(sat_id, sat_position, lat, long, alt):
     if not sat_position:
-        sat_position = get_satellite_position(sat_id, MY_LAT, MY_LONG, MY_ALT)
+        # update because sat_position is passed by reference
+        sat_position.update(get_satellite_position(sat_id, lat, long, alt))
     print(sat_position)
 
     # check if current timestamp in sat_position
@@ -56,7 +47,8 @@ def get_current_satellite_position(sat_id):
             return i
 
     # if not get latest data and try again
-    sat_position = get_satellite_position(sat_id, MY_LAT, MY_LONG, MY_ALT)
+    sat_position.clear()
+    sat_position.update(get_satellite_position(sat_id, lat, long, alt))
     for i in sat_position['positions']:
         if i['timestamp'] == int(time.time()):
             return i
