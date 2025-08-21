@@ -1,0 +1,8 @@
+0.7
+2020.2
+Oct 14 2022
+05:20:55
+C:/Users/Manav/Vivado Projects/arty/arty.srcs/sim_1/new/top_level_tb.vhd,1755810445,vhdl,,,,tb_top_level,,,,,,,,
+C:/Users/Manav/Vivado Projects/arty/arty.srcs/sources_1/new/pwm.vhd,1755810438,vhdl,C:/Users/Manav/Vivado Projects/arty/arty.srcs/sources_1/new/top_level.vhd,,,pwm,,,,,,,,
+C:/Users/Manav/Vivado Projects/arty/arty.srcs/sources_1/new/top_level.vhd,1755809811,vhdl,C:/Users/Manav/Vivado Projects/arty/arty.srcs/sim_1/new/top_level_tb.vhd,,,top_level,,,,,,,,
+C:/Users/Manav/Vivado Projects/arty/arty.srcs/sources_1/new/uart.vhd,1755800542,vhdl,C:/Users/Manav/Vivado Projects/arty/arty.srcs/sources_1/new/top_level.vhd,,,uart,,,,,,,,

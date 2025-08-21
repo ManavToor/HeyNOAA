@@ -1,0 +1,111 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date         : Thu Aug 21 17:12:33 2025
+| Host         : ManavLaptop running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_level_control_sets_placed.rpt
+| Design       : top_level
+| Device       : xc7z010
+--------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    33 |
+|    Minimum number of control sets                        |    33 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   204 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    33 |
+| >= 0 to < 4        |    26 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     4 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               1 |            1 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              44 |           14 |
+| Yes          | No                    | No                     |              49 |           34 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              46 |           14 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+---------------------------------------+----------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |             Enable Signal             |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+---------------------------------------+----------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG |                                       |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | ELEVATION/sig_out                     | ELEVATION/sig_out_i_1__0_n_0     |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/mark3_out                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[14]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[19]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[7]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[5]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[6]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[2]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[13]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[21]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[22]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[23]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[0]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[15]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[18]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[16]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[4]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[9]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[3]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[20]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[17]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[1]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[8]                     |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/p_0_in[10]                    |                                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | AZIMUTH/sig_out                       | AZIMUTH/sig_out_i_1_n_0          |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | UART_RX/ready1_out                    |                                  |                3 |              5 |         1.67 |
+|  clk_IBUF_BUFG | UART_RX/offset                        |                                  |                4 |             10 |         2.50 |
+|  clk_IBUF_BUFG | UART_RX/counter                       |                                  |                4 |             11 |         2.75 |
+|  clk_IBUF_BUFG |                                       | AZIMUTH/counter[21]_i_1_n_0      |                7 |             22 |         3.14 |
+|  clk_IBUF_BUFG |                                       | ELEVATION/counter[21]_i_1__0_n_0 |                7 |             22 |         3.14 |
+|  clk_IBUF_BUFG | AZIMUTH/sel                           | AZIMUTH/counter[21]_i_1_n_0      |                6 |             22 |         3.67 |
+|  clk_IBUF_BUFG | ELEVATION/pulse_counter[0]_i_1__0_n_0 | ELEVATION/counter[21]_i_1__0_n_0 |                6 |             22 |         3.67 |
++----------------+---------------------------------------+----------------------------------+------------------+----------------+--------------+
+
+
