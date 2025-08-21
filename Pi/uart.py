@@ -9,39 +9,21 @@ import serial
     
     Messages to FPGA will be sent as follows:
     
-        AAAAAAAAAaaaaaaa000BBBBBBBBBbbbbbbb
+        aaaaaaaaaaa00eeeeeeeeeee
         
         where:
-            [0:8]   A - float 1 whole numbers 
-            [9:15] a - float 1 fraction
-            [16:24] B - float 2 whole numbers
-            [25:31] b - float 2 fractions
+            [0:11]  a - pulse length (ns) of azimuth servo
+            [12:13] 0 - bit stuffing
+            [14:24] e - pulse length (ns) of elevation servo
             
 """
 
 ser = serial.Serial('/dev/ttyS0', baudrate=115200)
 
-def encode_number(f):
-    """
-    encodes float to unsigned 16-bit
-
-    :param f: 0.00 to 365.00
-    :return:
-    """
-
-    # split into integer and two decimals
-    integer = int(f)
-    fraction = int(round((f - integer) * 100))
-
-    # pack into 16 bits
-    return integer, fraction
 
 def write(azimuth, elevation):
-    a_int, a_frac = encode_number(azimuth)
-    e_int, e_frac = encode_number((elevation + 90) * 2)
-
-    frame = (a_int << 23) | (a_frac << 16) | (e_int << 7) | e_frac
-    packet = frame.to_bytes(4, 'big')
+    frame = (azimuth << 13) | (elevation & 0x7FF)
+    packet = frame.to_bytes(3, 'big')
     print(packet)
     ser.write(packet)
 

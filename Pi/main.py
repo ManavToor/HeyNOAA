@@ -18,6 +18,16 @@ MY_ALT = '44' # metres above sea level
 # caches next 300s of satellite data to save space
 sat_position = dict()
 
+def azimuth_to_pwm(a):
+    a = a / 2 # 180 deg servo controlling 360 deg via gear ratios
+    a = (a * 0.00555555) + 1 # http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf
+    return int(a * 1000) # return in ns
+
+def elevation_to_pwm(e):
+    e = e / 2 # 180 deg servo but will be restricted to 90 deg
+    e = (e * 0.00555555) + 1.5 # http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf
+    return int(e * 1000) # return in ns
+
 def sat_pos_to_azimuth_and_elevation(pos):
     return pos['azimuth'], pos['elevation']
 
@@ -33,7 +43,7 @@ def main(sat):
         pos = tracker.get_current_satellite_position(sat, sat_position, MY_LAT, MY_LONG, MY_ALT)
         azimuth, elevation = sat_pos_to_azimuth_and_elevation(pos)
         print(azimuth, elevation)
-        uart.write(azimuth, elevation)
+        uart.write(azimuth_to_pwm(azimuth), elevation_to_pwm(elevation))
 
         time.sleep(1)
 
